@@ -1,0 +1,462 @@
+.about {
+  position: relative;
+}
+
+.about::before {
+  content: '';
+  position: absolute;
+  left: -8%;
+  top: 8%;
+  width: 46vw;
+  height: 46vw;
+  max-width: 780px;
+  max-height: 780px;
+  background: radial-gradient(circle, rgba(122, 85, 240, 0.16), transparent 66%);
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.about__grid {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.58fr) minmax(0, 1.42fr);
+  gap: clamp(40px, 5vw, 100px);
+  align-items: start;
+}
+
+/* =========================================================
+   左侧
+   ========================================================= */
+.about__aside {
+  position: sticky;
+  top: 108px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about__portrait {
+  position: relative;
+  margin: 0;
+  padding: 14px;
+  border-radius: var(--r-xl);
+  overflow: hidden;
+}
+
+.about__portrait img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center 25%;
+  border-radius: calc(var(--r-xl) - 14px);
+  transition: transform 1.2s var(--ease-out);
+}
+
+.about__portrait:hover img {
+  transform: scale(1.035);
+}
+
+.about__portrait figcaption {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 8px 6px;
+}
+
+.about__portrait-name {
+  font-size: 21px;
+  font-weight: 640;
+  letter-spacing: -0.03em;
+}
+
+.about__portrait-name em {
+  color: var(--amber-300);
+  font-size: 26px;
+}
+
+.about__portrait-role {
+  font-size: 9.5px;
+  letter-spacing: 0.22em;
+}
+
+.about__halo {
+  position: absolute;
+  right: -30%;
+  bottom: -34%;
+  width: 76%;
+  height: 60%;
+  background: radial-gradient(circle, rgba(255, 207, 127, 0.35), transparent 68%);
+  filter: blur(46px);
+  pointer-events: none;
+}
+
+/* 数据：3 张卡片并排 */
+.about__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.about__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 18px 18px 15px;
+  border-radius: var(--r-md);
+  transition:
+    transform var(--dur) var(--ease-out),
+    border-color var(--dur) var(--ease-out);
+}
+
+.about__stat:hover {
+  transform: translateY(-4px);
+  border-color: var(--glass-border-strong);
+}
+
+.about__stat-value {
+  font-size: 34px;
+  font-weight: 680;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  background: linear-gradient(120deg, #fff, var(--violet-200) 55%, var(--amber-200));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.about__stat-label {
+  font-size: 13px;
+  color: var(--text-2);
+}
+
+.about__stat-en {
+  font-size: 9.5px;
+  letter-spacing: 0.2em;
+  color: var(--text-4);
+}
+
+/* =========================================================
+   右侧
+   ========================================================= */
+.about__main {
+  padding-top: 6px;
+}
+
+.about__title {
+  margin: 22px 0 34px;
+}
+
+.about__title-line {
+  display: block;
+}
+
+.about__title em {
+  font-style: italic;
+  padding-inline: 0.08em;
+}
+
+.about__text {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-left: 28px;
+}
+
+/* 引言 */
+.about__quote {
+  position: relative;
+  margin: 44px 0;
+  padding: 26px 30px 26px 34px;
+  border-left: 1px solid rgba(255, 255, 255, 0.14);
+  font-size: clamp(19px, 1.6vw, 27px);
+  line-height: 1.5;
+  color: var(--amber-200);
+}
+
+.about__quote-mark {
+  position: absolute;
+  left: 12px;
+  top: 10px;
+  font-size: 56px;
+  line-height: 1;
+  color: rgba(255, 207, 127, 0.24);
+}
+
+.about__block-label {
+  display: block;
+  margin-bottom: 18px;
+  font-size: 10px;
+  letter-spacing: 0.26em;
+  color: var(--text-4);
+}
+
+/* =========================================================
+   工作经历时间轴
+   ========================================================= */
+.about__experience {
+  margin: 56px 0 52px;
+}
+
+.exp__list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-left: 28px;
+}
+
+.exp__list::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 10px;
+  bottom: 28px;
+  width: 1px;
+  background: linear-gradient(180deg, rgba(122, 85, 240, 0.55), rgba(255, 207, 127, 0.25), transparent);
+}
+
+.exp__item {
+  position: relative;
+  padding-bottom: 18px;
+  list-style: none;
+  cursor: default;
+}
+
+.exp__node {
+  position: absolute;
+  left: -28px;
+  top: 10px;
+  width: 13px;
+  height: 13px;
+  display: grid;
+  place-items: center;
+  z-index: 1;
+}
+
+.exp__node i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--violet-300);
+  box-shadow: 0 0 0 2px rgba(122, 85, 240, 0.25);
+  transition:
+    transform 0.35s var(--ease-out),
+    background 0.35s var(--ease-out),
+    box-shadow 0.35s var(--ease-out);
+}
+
+.exp__item:hover .exp__node i,
+.exp__item.is-open .exp__node i {
+  transform: scale(1.45);
+  background: var(--amber-300);
+  box-shadow: 0 0 0 4px rgba(255, 207, 127, 0.18);
+}
+
+.exp__card {
+  padding: 22px 24px;
+  border-radius: var(--r-lg);
+  transition: border-color 0.35s var(--ease-out);
+}
+
+.exp__item:hover .exp__card,
+.exp__item.is-open .exp__card {
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.exp__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.exp__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.exp__period {
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  color: var(--text-4);
+}
+
+.exp__company {
+  font-size: 17px;
+  font-weight: 620;
+  letter-spacing: -0.02em;
+  color: var(--text-1);
+  line-height: 1.35;
+}
+
+.exp__role {
+  font-size: 12.5px;
+  color: var(--text-3);
+}
+
+.exp__tags {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  gap: 6px;
+  max-width: none;
+}
+
+.exp__tag {
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 10.5px;
+  color: var(--text-2);
+  background: rgba(122, 85, 240, 0.12);
+  border: 1px solid rgba(122, 85, 240, 0.22);
+  white-space: nowrap;
+  transition: background 0.25s var(--ease-out);
+}
+
+.exp__item:hover .exp__tag,
+.exp__item.is-open .exp__tag {
+  background: rgba(122, 85, 240, 0.2);
+}
+
+.exp__body {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition:
+    grid-template-rows 0.45s var(--ease-out),
+    opacity 0.35s var(--ease-out),
+    transform 0.35s var(--ease-out),
+    margin 0.35s var(--ease-out);
+}
+
+.exp__item:hover .exp__body,
+.exp__item.is-open .exp__body {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transform: translateY(0);
+  margin-top: 18px;
+}
+
+.exp__body > div {
+  overflow: hidden;
+}
+
+.exp__body-label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: var(--text-4);
+}
+
+.exp__body ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 16px;
+  margin: 0;
+  color: var(--text-2);
+  font-size: 13.5px;
+  line-height: 1.7;
+}
+
+.exp__body li {
+  list-style-type: disc;
+}
+
+.exp__body li::marker {
+  color: var(--violet-300);
+}
+
+/* =========================================================
+   技能标签
+   ========================================================= */
+.about__skills {
+  margin-top: 18px;
+  margin-bottom: 10px;
+}
+
+.about__skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chip--skill {
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 520;
+  letter-spacing: 0.02em;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition:
+    transform 0.25s var(--ease-out),
+    background 0.25s var(--ease-out),
+    border-color 0.25s var(--ease-out);
+}
+
+.chip--skill:hover {
+  transform: translateY(-2px);
+  background: rgba(122, 85, 240, 0.14);
+  border-color: rgba(122, 85, 240, 0.35);
+}
+
+/* =========================================================
+   响应式
+   ========================================================= */
+@media (max-width: 1080px) {
+  .about__grid {
+    grid-template-columns: 1fr;
+    gap: 52px;
+  }
+  .about__aside {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+  .exp__header {
+    flex-direction: column;
+    gap: 14px;
+  }
+  .exp__tags {
+    justify-content: flex-start;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 720px) {
+  .about__aside {
+    max-width: 100%;
+  }
+  .about__stats {
+    grid-template-columns: 1fr;
+  }
+  .about__quote {
+    margin: 34px 0;
+    padding: 20px 0 20px 24px;
+  }
+  .about__stat-value {
+    font-size: 28px;
+  }
+  .about__text {
+    padding-left: 22px;
+  }
+  .exp__list {
+    padding-left: 22px;
+  }
+  .exp__node {
+    left: -22px;
+  }
+  .exp__card {
+    padding: 18px;
+  }
+  .exp__company {
+    font-size: 15px;
+  }
+}

@@ -1,0 +1,96 @@
+@media (hover: hover) and (pointer: fine) {
+  .cursor-dot,
+  .cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: var(--z-cursor);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .cursor-dot.is-on,
+  .cursor-ring.is-on {
+    opacity: 1;
+  }
+
+  .cursor-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--amber-300);
+    box-shadow: 0 0 14px rgba(255, 207, 127, 0.9);
+  }
+
+  .cursor-ring {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid rgba(226, 220, 255, 0.42);
+    backdrop-filter: blur(2px);
+    transition:
+      width 0.35s var(--ease-out),
+      height 0.35s var(--ease-out),
+      background-color 0.35s var(--ease-out),
+      border-color 0.35s var(--ease-out),
+      opacity 0.3s ease;
+  }
+
+  .cursor-ring.is-down {
+    width: 26px;
+    height: 26px;
+    background: rgba(255, 255, 255, 0.14);
+  }
+
+  .cursor-ring[data-mode='link'] {
+    width: 52px;
+    height: 52px;
+    border-color: rgba(255, 207, 127, 0.7);
+    background: rgba(255, 207, 127, 0.1);
+  }
+
+  .cursor-ring[data-mode='view'] {
+    width: 88px;
+    height: 88px;
+    border-color: transparent;
+    background: rgba(244, 239, 255, 0.14);
+    backdrop-filter: blur(6px) saturate(140%);
+  }
+
+  .cursor-ring__label {
+    font-size: 10.5px;
+    font-weight: 620;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #fff;
+    white-space: nowrap;
+    opacity: 0;
+    transform: scale(0.8);
+    transition:
+      opacity 0.25s var(--ease-out),
+      transform 0.25s var(--ease-out);
+  }
+
+  .cursor-ring[data-mode='view'] .cursor-ring__label {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* 隐藏系统光标 */
+  body,
+  a,
+  button,
+  [data-cursor] {
+    cursor: none;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .cursor-dot,
+  .cursor-ring {
+    display: none;
+  }
+}

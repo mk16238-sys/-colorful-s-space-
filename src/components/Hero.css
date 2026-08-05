@@ -1,0 +1,465 @@
+.hero {
+  --mx: 0;
+  --my: 0;
+  --sp: 0;
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-block: 120px 34px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* =========================================================
+   背景:动态极光(视频边缘的融合底色)
+   ========================================================= */
+.hero__aurora {
+  position: absolute;
+  inset: -10%;
+  z-index: -3;
+  transition: opacity 1.2s var(--ease-out);
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  will-change: transform;
+  opacity: 0.85;
+}
+
+.blob--1 {
+  width: 46vw;
+  height: 46vw;
+  left: 2%;
+  top: 6%;
+  background: radial-gradient(circle at 40% 40%, #7a55f0, rgba(122, 85, 240, 0) 68%);
+  animation: drift1 22s var(--ease-inout) infinite;
+  transform: translate3d(calc(var(--mx) * -22px), calc(var(--my) * -18px), 0);
+}
+
+.blob--2 {
+  width: 38vw;
+  height: 38vw;
+  right: 4%;
+  top: 0%;
+  background: radial-gradient(circle at 55% 45%, #ffcf7f, rgba(255, 207, 127, 0) 66%);
+  opacity: 0.55;
+  animation: drift2 26s var(--ease-inout) infinite;
+}
+
+.blob--3 {
+  width: 52vw;
+  height: 52vw;
+  left: 28%;
+  bottom: -22%;
+  background: radial-gradient(circle at 50% 50%, #ac95ff, rgba(172, 149, 255, 0) 70%);
+  animation: drift3 30s var(--ease-inout) infinite;
+}
+
+.blob--4 {
+  width: 26vw;
+  height: 26vw;
+  right: 22%;
+  bottom: 4%;
+  background: radial-gradient(circle at 50% 50%, #f9b95c, rgba(249, 185, 92, 0) 68%);
+  opacity: 0.4;
+  animation: drift1 19s var(--ease-inout) infinite reverse;
+}
+
+@keyframes drift1 {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(7%, 9%, 0) scale(1.14);
+  }
+}
+
+@keyframes drift2 {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1.05);
+  }
+  50% {
+    transform: translate3d(-9%, 12%, 0) scale(0.9);
+  }
+}
+
+@keyframes drift3 {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(0.95);
+  }
+  50% {
+    transform: translate3d(-6%, -10%, 0) scale(1.12);
+  }
+}
+
+/* 科技感网格 */
+.hero__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+  background-size: 92px 92px;
+  mask-image: radial-gradient(ellipse 78% 62% at 50% 45%, #000 25%, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse 78% 62% at 50% 45%, #000 25%, transparent 78%);
+}
+
+/* =========================================================
+   右侧半透明视频球
+   ========================================================= */
+.hero__visual {
+  position: absolute;
+  right: -3%;
+  top: 47%;
+  width: min(54vw, 820px);
+  height: min(54vw, 820px);
+  z-index: -2;
+  transform: translateY(-50%) translate3d(calc(var(--mx) * -18px), calc(var(--my) * -14px), 0);
+  opacity: 0;
+  transition: opacity 1.4s var(--ease-out);
+  pointer-events: none;
+}
+
+.hero__visual.is-on {
+  opacity: 1;
+}
+
+.hero__orb {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  /* 边缘羽化,让视频和极光背景自然融合 */
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 42%, transparent 84%);
+  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 42%, transparent 84%);
+  box-shadow:
+    inset 0 0 110px rgba(8, 5, 16, 0.48),
+    0 0 120px rgba(122, 85, 240, 0.22),
+    0 0 240px rgba(255, 207, 127, 0.10);
+  animation: orbMorph 18s var(--ease-inout) infinite alternate;
+}
+
+@keyframes orbMorph {
+  0% {
+    border-radius: 52% 48% 55% 45% / 48% 52% 48% 52%;
+  }
+  50% {
+    border-radius: 48% 52% 46% 54% / 54% 46% 54% 46%;
+  }
+  100% {
+    border-radius: 55% 45% 52% 48% / 50% 50% 52% 48%;
+  }
+}
+
+.hero__orb-video {
+  position: absolute;
+  inset: -3%;
+  width: 106%;
+  height: 106%;
+  object-fit: cover;
+  opacity: 0.78;
+  transform: scale(1.02);
+  filter: saturate(1.05);
+}
+
+.hero__orb-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, transparent 52%, rgba(8, 5, 16, 0.45) 100%);
+  pointer-events: none;
+}
+
+/* =========================================================
+   遮罩:左侧重,右侧轻,保证文字可读同时让视频透出来
+   ========================================================= */
+.hero__cursor-grid {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.hero__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(8, 5, 16, 0.82) 0%, rgba(8, 5, 16, 0.34) 40%, rgba(8, 5, 16, 0.06) 58%, transparent 70%),
+    linear-gradient(180deg, rgba(8, 5, 16, 0.55) 0%, transparent 30%, rgba(8, 5, 16, 0.45) 72%, var(--ink-800) 100%);
+}
+
+/* =========================================================
+   内容
+   ========================================================= */
+.hero__content {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding-bottom: 40px;
+  opacity: calc(1 - var(--sp) * 1.15);
+  transform: translateY(calc(var(--sp) * -46px));
+}
+
+.hero__copy {
+  position: relative;
+  z-index: 1;
+  width: min(50%, 720px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero__wall {
+  position: absolute;
+  left: 52%;
+  right: calc((100vw - 100%) / -2 - var(--gutter));
+  top: 50%;
+  transform: translateY(-50%);
+  height: min(94vh, 940px);
+  border-radius: var(--r-xl) 0 0 var(--r-xl);
+  overflow: hidden;
+  z-index: 0;
+}
+
+.hero__eyebrow {
+  overflow: hidden;
+  margin-bottom: 26px;
+}
+
+.hero__eyebrow .eyebrow {
+  transform: translateY(120%);
+  transition: transform 1s var(--ease-out) 0.15s;
+}
+
+.hero.is-ready .hero__eyebrow .eyebrow {
+  transform: translateY(0);
+}
+
+.hero__title {
+  margin-bottom: 30px;
+}
+
+.hero__title .line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.06em;
+}
+
+.hero__title .line:nth-child(2) {
+  white-space: nowrap;
+}
+
+.hero__title em {
+  display: block;
+  font-style: normal;
+  transform: translateY(105%);
+  transition: transform 1.15s var(--ease-out);
+  background: var(--grad-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero__title .line:nth-child(1) em {
+  transition-delay: 0.24s;
+}
+.hero__title .line:nth-child(2) em {
+  transition-delay: 0.36s;
+}
+
+.hero.is-ready .hero__title em {
+  transform: translateY(0);
+}
+
+.hero__accent {
+  display: inline-block;
+  margin-left: 0.16em;
+  background: linear-gradient(100deg, var(--amber-200), var(--amber-400));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 0.92em;
+}
+
+.hero__sub {
+  max-width: 50ch;
+  margin-bottom: 40px;
+  color: rgba(240, 235, 255, 0.78);
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 1s var(--ease-out) 0.62s,
+    transform 1s var(--ease-out) 0.62s;
+}
+
+.hero.is-ready .hero__sub {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero__sub-line {
+  display: block;
+}
+
+.hero__sub-line + .hero__sub-line {
+  margin-top: 0.35em;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 1s var(--ease-out) 0.76s,
+    transform 1s var(--ease-out) 0.76s;
+}
+
+.hero.is-ready .hero__actions {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================================
+   底部信息条
+   ========================================================= */
+.hero__bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-top: 18px;
+  opacity: 0;
+  transition: opacity 1s var(--ease-out) 0.95s;
+}
+
+.hero.is-ready .hero__bar {
+  opacity: calc(1 - var(--sp) * 1.6);
+}
+
+.hero__bar .mono {
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+}
+
+.hero__scroll {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-3);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.hero__scroll:hover {
+  color: var(--text-1);
+}
+
+.hero__scroll-line {
+  position: relative;
+  display: block;
+  width: 1px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.15);
+  overflow: hidden;
+}
+
+.hero__scroll-line i {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 45%;
+  background: linear-gradient(180deg, transparent, var(--amber-300));
+  animation: scrollRun 2s var(--ease-inout) infinite;
+}
+
+@keyframes scrollRun {
+  0% {
+    transform: translateY(-100%);
+  }
+  60%,
+  100% {
+    transform: translateY(240%);
+  }
+}
+
+/* =========================================================
+   响应式
+   ========================================================= */
+@media (max-width: 1100px) {
+  .hero__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 42px;
+  }
+  .hero__wall {
+    display: none;
+  }
+  .hero__copy {
+    width: 100%;
+    max-width: 680px;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero {
+    min-height: 92svh;
+    padding-block: 108px 24px;
+  }
+  .hero__title {
+    max-width: 12ch;
+  }
+  .hero__sub {
+    font-size: 15px;
+    margin-bottom: 32px;
+  }
+  .hero__bar > .mono {
+    display: none;
+  }
+  .hero__bar {
+    justify-content: center;
+  }
+  .blob {
+    filter: blur(64px);
+  }
+  .blob--1 {
+    width: 76vw;
+    height: 76vw;
+  }
+  .blob--2 {
+    width: 62vw;
+    height: 62vw;
+  }
+  .blob--3 {
+    width: 84vw;
+    height: 84vw;
+  }
+  .blob--4 {
+    display: none;
+  }
+  .hero__grid {
+    background-size: 56px 56px;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero__actions .btn {
+    flex: 1;
+    min-width: 140px;
+  }
+}

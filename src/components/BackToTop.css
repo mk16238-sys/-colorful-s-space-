@@ -1,0 +1,63 @@
+.back-to-top {
+  position: fixed;
+  right: clamp(16px, 2.2vw, 32px);
+  bottom: clamp(16px, 2.2vw, 32px);
+  z-index: 95;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: var(--r-full);
+  color: var(--text-3);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition:
+    opacity 0.45s var(--ease-out),
+    visibility 0.45s var(--ease-out),
+    transform 0.45s var(--ease-out),
+    color 0.3s var(--ease-out),
+    background-color 0.3s var(--ease-out);
+  pointer-events: none;
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.back-to-top:hover {
+  color: var(--text-1);
+  background: rgba(255, 255, 255, 0.09);
+  transform: translateY(-2px);
+}
+
+.back-to-top__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--amber-300);
+  box-shadow: 0 0 10px 1px rgba(255, 207, 127, 0.55);
+}
+
+.back-to-top .mono {
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  color: inherit;
+}
+
+@media (max-width: 720px) {
+  .back-to-top {
+    padding: 9px 14px;
+    gap: 6px;
+  }
+  .back-to-top .mono {
+    display: none;
+  }
+}

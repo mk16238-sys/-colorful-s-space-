@@ -1,0 +1,13 @@
+node_modules
+dist
+dist-ssr
+*.local
+.DS_Store
+.vite
+*.log
+
+# Vite 临时配置文件
+vite.config.js.timestamp-*.mjs
+
+# 多余预览文件
+preview-motion.html

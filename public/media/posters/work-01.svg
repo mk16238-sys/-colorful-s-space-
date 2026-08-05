@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#140c26"/>
+      <stop offset="1" stop-color="#0a0616"/>
+    </linearGradient>
+    <filter id="soft" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="112"/>
+    </filter>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+    <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M 64 0 L 0 0 0 64" fill="none" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8f72ff" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#ffcf7f" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#6035d4" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <g>
+    <circle cx="352" cy="270" r="480" fill="#8f72ff" opacity="0.8" filter="url(#soft)"/>
+    <circle cx="1184" cy="216" r="352" fill="#ffcf7f" opacity="0.6" filter="url(#soft)"/>
+    <circle cx="896.0000000000001" cy="774" r="544" fill="#6035d4" opacity="0.55" filter="url(#soft)"/>
+  </g>
+  <rect width="1600" height="900" fill="url(#grid)"/>
+  <rect width="1600" height="900" filter="url(#grain)" opacity="0.05"/>
+
+  <!-- 装饰线 -->
+  <rect x="128" y="468" width="1344" height="1.5" fill="url(#line)"/>
+  <circle cx="128" cy="468.75" r="4" fill="#ffcf7f"/>
+
+  <!-- 文字 -->
+  <text x="128" y="396" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
+        font-size="184" font-weight="700" fill="#ffffff" fill-opacity="0.9"
+        letter-spacing="-9.6">01</text>
+
+  <text x="128" y="558" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
+        font-size="51" font-weight="600" fill="#ffffff" fill-opacity="0.86">Aurora Design System</text>
+
+  <text x="128" y="612" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
+        font-size="30" font-weight="400" fill="#ffffff" fill-opacity="0.42"
+        letter-spacing="6.4">DESIGN SYSTEM / MOTION · 2025</text>
+
+  <text x="1472" y="837" text-anchor="end" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
+        font-size="22" fill="#ffffff" fill-opacity="0.3"
+        letter-spacing="8">COLORFUL'S SPACE</text>
+</svg>

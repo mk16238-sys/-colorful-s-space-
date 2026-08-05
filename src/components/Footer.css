@@ -1,0 +1,83 @@
+.footer {
+  position: relative;
+  padding-block: clamp(40px, 4vw, 70px) 34px;
+  overflow: hidden;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1) 20%,
+    rgba(255, 255, 255, 0.1) 80%,
+    transparent
+  );
+}
+
+/* 巨型品牌字 */
+.footer__mark {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.14em;
+  margin-bottom: clamp(28px, 3vw, 54px);
+  font-size: clamp(46px, 12.5vw, 210px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.055em;
+  white-space: nowrap;
+  background: linear-gradient(
+    180deg,
+    rgba(228, 219, 255, 0.28) 0%,
+    rgba(228, 219, 255, 0.06) 68%,
+    transparent 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  user-select: none;
+}
+
+.footer__mark em {
+  font-style: italic;
+  background: linear-gradient(180deg, rgba(255, 207, 127, 0.42), rgba(255, 207, 127, 0.05) 78%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.footer__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.footer__bar .mono {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--text-4);
+}
+
+.footer__time b {
+  color: var(--amber-300);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 720px) {
+  .footer__bar {
+    justify-content: center;
+    text-align: center;
+  }
+  .footer__time {
+    order: -1;
+  }
+}

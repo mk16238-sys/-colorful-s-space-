@@ -1,0 +1,121 @@
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(700px 500px at 50% 42%, rgba(122, 85, 240, 0.22), transparent 70%),
+    var(--ink-900);
+  transition:
+    transform 1s var(--ease-inout),
+    opacity 0.7s ease 0.25s;
+}
+
+.intro--out {
+  transform: translateY(-101%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.intro__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+  padding-inline: 24px;
+}
+
+.intro__mark {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  font-size: clamp(26px, 4.2vw, 52px);
+  font-weight: 660;
+  letter-spacing: -0.04em;
+  color: var(--text-1);
+}
+
+.intro__dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--grad-warm);
+  box-shadow: 0 0 24px rgba(255, 207, 127, 0.85);
+  animation: introDot 1.5s var(--ease-out) infinite;
+  align-self: center;
+}
+
+@keyframes introDot {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.55);
+    opacity: 0.5;
+  }
+}
+
+.intro__word {
+  opacity: 0;
+  animation: introWord 0.9s var(--ease-out) forwards;
+}
+
+.intro__word:nth-of-type(1) {
+  animation-delay: 0.12s;
+}
+
+.intro__word--serif {
+  color: var(--amber-200);
+  animation-delay: 0.28s;
+}
+
+@keyframes introWord {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.intro__bar {
+  width: min(220px, 46vw);
+  height: 2px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.intro__bar i {
+  display: block;
+  height: 100%;
+  width: 100%;
+  border-radius: inherit;
+  background: var(--grad-aurora);
+  transform-origin: left center;
+  transform: scaleX(0);
+  animation: introBar 1.45s var(--ease-inout) forwards;
+}
+
+@keyframes introBar {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.intro__meta {
+  opacity: 0;
+  animation: introWord 0.8s var(--ease-out) 0.5s forwards;
+  font-size: 10.5px;
+  letter-spacing: 0.28em;
+}
