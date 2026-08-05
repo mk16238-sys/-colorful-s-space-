@@ -2,7 +2,8 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
-  base: './',
+  // GitHub Pages 部署到仓库子路径；本地开发保持相对路径
+  base: process.env.GITHUB_ACTIONS ? '/-colorful-s-space-/' : './',
   plugins: [react()],
   server: {
     host: true,

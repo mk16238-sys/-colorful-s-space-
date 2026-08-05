@@ -38,7 +38,7 @@ function Lightbox({ item, onClose }) {
           ) : item.href ? (
             <iframe
               className="lb__iframe"
-              src={item.href}
+              src={`${import.meta.env.BASE_URL}${item.href}`}
               title={item.title}
               allow="fullscreen"
             />
