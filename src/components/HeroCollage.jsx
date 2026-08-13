@@ -11,7 +11,7 @@ export default function HeroCollage({ ready, lowPower }) {
     let cancelled = false
     const imgs = collage.pieces.map((p) => {
       const img = new Image()
-      img.src = `media/collage/${p.id}.png`
+      img.src = `media/collage/${p.id}.webp`
       return img
     })
     let done = 0
@@ -51,7 +51,7 @@ export default function HeroCollage({ ready, lowPower }) {
           <img
             key={p.id}
             className={`hero-collage__piece hero-collage__piece--${p.type}`}
-            src={`media/collage/${p.id}.png`}
+            src={`media/collage/${p.id}.webp`}
             alt=""
             loading="eager"
             decoding="async"

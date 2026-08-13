@@ -18,7 +18,7 @@ extend({ MeshLineGeometry, MeshLineMaterial })
 
 // 资源路径（放在 publicmedia/lanyard/ 下）
 const CARD_GLB = 'media/lanyard/card.glb'
-const LANYARD_PNG = 'media/lanyard/lanyard.png'
+const LANYARD_PNG = 'media/lanyard/lanyard.webp'
 
 // 1x1 透明像素，让 useTexture 在没传图片时也能无条件调用
 const BLANK_PIXEL =

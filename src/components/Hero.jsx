@@ -5,15 +5,15 @@ import CursorGrid from './CursorGrid.jsx'
 import './Hero.css'
 
 const showcaseItems = [
-  { image: 'media/showcase/1.png', title: '作品展示 1' },
-  { image: 'media/showcase/2.png', title: '作品展示 2' },
-  { image: 'media/showcase/3.png', title: '作品展示 3' },
-  { image: 'media/showcase/画框.png', title: '画框' },
-  { image: 'media/showcase/画框备份.png', title: '画框备份' },
-  { image: 'media/showcase/画框备份%202.png', title: '画框备份 2' },
-  { image: 'media/showcase/画框备份%203.png', title: '画框备份 3' },
-  { image: 'media/showcase/画框备份%204.png', title: '画框备份 4' },
-  { image: 'media/showcase/画框备份%205.png', title: '画框备份 5' },
+  { image: 'media/showcase/1.webp', title: '作品展示 1' },
+  { image: 'media/showcase/2.webp', title: '作品展示 2' },
+  { image: 'media/showcase/3.webp', title: '作品展示 3' },
+  { image: 'media/showcase/画框.webp', title: '画框' },
+  { image: 'media/showcase/画框备份.webp', title: '画框备份' },
+  { image: 'media/showcase/画框备份%202.webp', title: '画框备份 2' },
+  { image: 'media/showcase/画框备份%203.webp', title: '画框备份 3' },
+  { image: 'media/showcase/画框备份%204.webp', title: '画框备份 4' },
+  { image: 'media/showcase/画框备份%205.webp', title: '画框备份 5' },
 ]
 
 export default function Hero({ ready, lowPower }) {

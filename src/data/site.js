@@ -33,7 +33,7 @@ export const hero = {
 
 /* ---------- 角色介绍 ---------- */
 export const about = {
-  avatar: 'media/avatar.jpg',
+  avatar: 'media/avatar.webp',
   eyebrow: 'About Me',
   title: '谭君桦',
   paragraphs: [
@@ -122,7 +122,7 @@ export const works = [
     subtitle: '无人机监管与服务平台',
     year: '2026',
     tags: ['G端', 'Data Viz'],
-    cover: 'media/posters/work-uav.jpg',
+    cover: 'media/posters/work-uav.webp',
     href: 'preview-login-dashboard.html',
     desc: '本低空空域无人机监管与服务平台，实现地图可视化无人机目标监测、告警处置、设备与飞行管理，对低空目标进行分类识别，支撑城市低空安全管控。',
     size: 'wide',
