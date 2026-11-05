@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#140c26"/>
+      <stop offset="1" stop-color="#0a0616"/>
+    </linearGradient>
+    <filter id="soft" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="134"/>
+    </filter>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+    <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M 64 0 L 0 0 0 64" fill="none" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8f72ff" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#ffcf7f" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#6035d4" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <g>
+    <circle cx="614.4" cy="324" r="576" fill="#8f72ff" opacity="0.8" filter="url(#soft)"/>
+    <circle cx="1267.2" cy="259.2" r="422.4" fill="#ffcf7f" opacity="0.6" filter="url(#soft)"/>
+    <circle cx="1075.2" cy="972" r="652.8000000000001" fill="#6035d4" opacity="0.55" filter="url(#soft)"/>
+  </g>
+  <rect width="1920" height="1080" fill="url(#grid)"/>
+  <rect width="1920" height="1080" filter="url(#grain)" opacity="0.05"/>
+
+  <!-- 装饰线 -->
+  <rect x="153.6" y="561.6" width="1612.8" height="1.5" fill="url(#line)"/>
+  <circle cx="153.6" cy="562.35" r="4" fill="#ffcf7f"/>
+
+  <!-- 文字 -->
+  <text x="153.6" y="475.2" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
+        font-size="221" font-weight="700" fill="#ffffff" fill-opacity="0.9"
+        letter-spacing="-11.52"></text>
+
+  <text x="153.6" y="669.6" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
+        font-size="61" font-weight="600" fill="#ffffff" fill-opacity="0.86"></text>
+
+  <text x="153.6" y="734.4000000000001" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
+        font-size="36" font-weight="400" fill="#ffffff" fill-opacity="0.42"
+        letter-spacing="7.68"></text>
+
+  <text x="1766.4" y="1004.4000000000001" text-anchor="end" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
+        font-size="27" fill="#ffffff" fill-opacity="0.3"
+        letter-spacing="9.6">COLORFUL'S SPACE</text>
+</svg>
