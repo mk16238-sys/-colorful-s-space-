@@ -1,0 +1,44 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 直接部署仓库里已上传的 dist 产物，不再重新构建，
+      # 避免云端用旧源码覆盖手动上传的新版本。
+      - name: 检查站点产物
+        run: |
+          if [ ! -f dist/index.html ]; then
+            echo "缺少 dist/index.html，请先在本地 npm run build 后上传 dist 目录"
+            exit 1
+          fi
+          echo "使用仓库中的 dist 产物进行部署"
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
